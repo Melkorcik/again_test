@@ -1,0 +1,47 @@
+.wrap{
+    display: flex;
+    position: absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    width: 100%;
+    height: 100%;
+    background-color: #448aff;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    width: 300px;
+    height: 300px;
+    position:relative;
+    perspective:1000px; /*для 3D эффекта при развороте карточки, мы задаем так глубину*/
+}
+.front, .back{
+    position:absolute; 
+    width: 100%;
+    height: 100%;
+    left:0px;
+    top:0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:1s;
+    backface-visibility: hidden; /*скрывает обратную сторону карточки*/
+}
+.front{
+    background-color: aliceblue;
+    /* border:1px solid green; */
+}
+.back{
+    background-color: #c0ca33;
+    transform:rotateY(180deg);
+    /* border:1px solid red; */
+}
+
+.card:hover .front{
+    transform:rotateY(180deg); /*фронтальная строна карточки разворачивается на 180 градусов*/
+}
+.card:hover .back{
+    transform: rotateY(360deg); /*тыльная строна карточки не разворачивается*/
+}

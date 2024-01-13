@@ -1,0 +1,65 @@
+*, *, *:before, *:after{
+    box-sizing: border-box;
+}
+
+.container{
+    background-color: #F06292;
+    height: 300px;
+    width:300px;
+    display:flex;
+    justify-content: center; /*Чтобы эти свойства работали надо установить display:flex*/
+    align-items: center; /*Чтобы эти свойства работали надо установить display:flex*/
+    text-align: center; /*Чтобы эти свойства работали надо установить display:flex*/
+    color:white;
+    position:relative;
+}
+figure h1{
+    transition:0.2s;
+    transform:translateY(20px); /* За .2s Заголовок сдивинется на 20 пикселей вниз*/
+}
+figure p{
+    transition:0.2s;
+    transform:translateY(-20px); /*За .2s Описание сдивинется на 20 пикселей вниз*/
+    opacity:0;
+}
+
+figure::before{
+    content:'';
+    position: absolute;
+    top:5%;  /*Чтобы рамка отодвинулатсь на расстояние 5%*/
+    bottom:5%; /*Чтобы рамка отодвинулатсь на расстояние 5%*/
+    left:5%; /*Чтобы рамка отодвинулатсь на расстояние 5%*/
+    right:5%; /*Чтобы рамка отодвинулатсь на расстояние 5%*/
+    border-top:1px solid white;
+    border-bottom:1px solid white;
+    transform:scaleX(0); /*Изначально линии находится в нулевой позиции по оси Х из-за этого линию не видно*/
+    
+    transition:0.2s;
+}
+
+figure:hover::before{
+    transform:scale(1); /*При наведении на блок линии растянутся на всю свою длину*/
+}
+
+figure::after{
+    content:'';
+    position: absolute;
+    top:5%;
+    bottom:5%;
+    left:5%;
+    right:5%;
+    border-left:1px solid white;
+    border-right:1px solid white;
+    transform:scaleY(0); /*Изначально линия находится в нулевой позиции по оси Х из-за этого линию не видно*/
+    transition:0.2s;
+}
+
+figure:hover::after{
+    transform:scale(1); 
+}
+
+figure:hover h1,
+figure:hover p{
+    transform:translateY(0); /*При наведении на заголовок заголовок и описание вернутся на свои позиции на оси Y*/
+    opacity: 1; /*При наведении описание будет вилно*/
+}
